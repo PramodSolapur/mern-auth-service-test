@@ -237,15 +237,41 @@ npx lint-staged
 
 #### Application config setup
 
-- Create .env file to store sensitive information
-- Install dotenv package
+-   Create .env file to store sensitive information
+-   Install dotenv package
+
 ```sh
 npm install dotenv
 ```
+- Provide .env file path if it is not directly in the root folder
+```ts
+import { config } from "dotnev"
+config()
+```
 
+#### Express app setup
 
-[] Application config setup
-[] Express app setup
+- Install express version 4
+```sh
+npm i express@4.18.2 
+npm i  @types/express@4.18.2 -D
+```
+- Create app.ts file and export the app
+- Create an express application
+- Listen on port 7777 in server.ts file
+
+```ts
+const app = Express()
+app.listen(7777, () => {
+    console.log("server is listening on port 7777")
+})
+```
+
+- TypeScript execution and REPL for node.js, with source map and native ESM support.
+```sh
+npm i nodemon ts-node -D
+```
+
 [] Logger setup
 [] Error handling setup
 [] Tests setup
