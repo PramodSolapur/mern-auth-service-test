@@ -288,20 +288,49 @@ npm i -D @types/winston
 
 -   Create logger.ts file in config folder
 
-
 #### Error handling setup
 
-- Create a global middleware to handle errors
+-   Create a global middleware to handle errors
+
 ```js
 app.use((err, req, res, next) => {
-    res.status(statusCode).json({ msg: "some msg" })
+    res.status(statusCode).json({ msg: 'some msg' })
 })
 ```
-- Install http-errors package to send proper status code
+
+-   Install http-errors package to send proper status code
+
 ```sh
 npm i http-errors
 npm i -D @types/http-errors
 ```
 
-[] Tests setup
+#### Tests setup
+
+- Install jest testing library  https://jestjs.io/docs/getting-started
+```sh
+npm install --save-dev jest  @types/jest
+```
+- Add script to run
+```json
+"scripts": {
+    "test" : "jest --watch --runInBand"
+}
+```
+- Install ts-jest to work with typescript
+```sh
+npm install --save-dev ts-jest @types/jest
+```
+- Create jest.config.js
+```sh
+npx ts-jest config:init
+```
+- Create app.spec.ts or app.test.ts file in the root to test jest
+- To provide a high-level abstraction for testing HTTP install supertest
+```sh
+npm install supertest @types/supertest --save-dev
+```
+
+
+
 [] Create template
