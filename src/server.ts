@@ -2,7 +2,7 @@ function welcome(name: string) {
     const user = {
         name: 'pramod',
     }
-    const username = user.name
+    const username = user['name']
     return name + username
 }
 

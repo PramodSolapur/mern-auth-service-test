@@ -181,11 +181,15 @@ export default tseslint.config(
   tseslint.configs.recommended,
 );
 ```
-- To avoid conflicts between prettier and eslint install 
+
+-   To avoid conflicts between prettier and eslint install
+
 ```sh
 npm i -D eslint-config-prettier
 ```
-- Import and add config to eslint.cofnig.mjs file
+
+-   Import and add config to eslint.cofnig.mjs file
+
 ```js
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 export default tseslint.config(someConfig, eslintConfigPrettier)
@@ -193,15 +197,41 @@ export default tseslint.config(someConfig, eslintConfigPrettier)
 
 #### Git hooks / husky setup
 
-- Install husky package
+-   Install husky package
+
 ```sh
 npm install --save-dev husky
 ```
-- The init command simplifies setting up husky in a project.
+
+-   The init command simplifies setting up husky in a project.
+
 ```sh
 npx husky init
 ```
-- It creates a pre-commit script in .husky/ and updates the prepare script in package.json. Modifications can be made later to suit your workflow.
+
+-   It creates a pre-commit script in .husky/ and updates the prepare script in package.json. Modifications can be made later to suit your workflow.
+-   Integrate huskywith eslint https://github.com/lint-staged/lint-staged
+
+```sh
+npm install --save-dev lint-staged # requires further setup
+```
+
+-   Add this block of code into package.json file
+
+```json
+"lint-staged": {
+        "*.ts": [
+            "npm run lint:fix",
+            "npm run format:fix"
+        ]
+    }
+```
+
+-   Add below command to pre-commit husky file
+
+```bash
+npx lint-staged
+```
 
 [] Application config setup
 [] Express app setup
