@@ -1,11 +1,16 @@
 {
   "name": "auth-service-01",
   "version": "1.0.0",
-  "description": "[]  Git Setup\r []  Node Version Manager Setup\r []  Nodejs Project setup\r []  Typescript setup\r []  Prettier setup\r []  ESlint setup\r []  Git hooks setup\r []  Application config setup\r []  Express app setup\r []  Logger setup\r []  Error handling setup\r []  Tests setup\r []  Create template",
+  "description": "",
   "main": "server.js",
   "scripts": {
+    "dev": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Pramod Solapur",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "typescript": "^4.5.2"
+  }
 }

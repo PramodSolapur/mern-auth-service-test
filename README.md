@@ -1,18 +1,5 @@
 ### Setup Nodejs Project Steps
 
-[]  Git Setup
-[]  Node Version Manager Setup
-[]  Nodejs Project setup
-[]  Typescript setup
-[]  Prettier setup
-[]  ESlint setup
-[]  Git hooks setup
-[]  Application config setup
-[]  Express app setup
-[]  Logger setup
-[]  Error handling setup
-[]  Tests setup
-[]  Create template
 
 #### Git Setup
 
@@ -79,3 +66,45 @@ npm init
 ```
 - It will create package.json file
 - Create src folder
+
+
+#### Typescript setup
+
+- Install typescript as dev dependency in your peoject
+```sh
+npm i -D typescript
+```
+- In node_modules/bin you will see **tsc** that is typescript compiler and **tscserver** which gives auto-completion
+- Install nodejs types
+```sh
+npm i -D @types/node  
+```
+- Compile ts file
+```sh
+npx tsc fileName
+```
+- To configure typescript, generate tsconfig.json file
+```sh
+npx tsc --init
+```
+- Specify rootDir and outDir in tsconfig.json file
+```tsconfig.json
+rootDir: "./src",
+outDir: "./dist"
+```
+- This makes tsc read tsconfig.json and compile all files according to the settings (including outDir).
+```sh
+npx tsc
+``` 
+
+
+
+[]  Prettier setup
+[]  ESlint setup
+[]  Git hooks setup
+[]  Application config setup
+[]  Express app setup
+[]  Logger setup
+[]  Error handling setup
+[]  Tests setup
+[]  Create template
