@@ -128,7 +128,7 @@ npx tsc
 
 #### Prettier setup
 
--   Install prettier https://prettier.io/docs/install
+-   Install prettier https://prettier.io/docs/install as a dev dependency
 
 ```sh
 npm install --save-dev --save-exact prettier@3.0.3
@@ -158,8 +158,39 @@ node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncov
 "format:check": "prettier . --check",
 ```
 
-[] Prettier setup
-[] ESlint setup
+#### ESlint setup
+
+-   ESLint is a tool for identifying and fixing problems in your JavaScript code, essential for maintaining code quality and consistency.
+-   Configure typescript eslint https://typescript-eslint.io/getting-started/legacy-eslint-setup/
+-   Install eslint and types as a dev dependency
+
+```sh
+npm install --save-dev eslint @eslint/js typescript-eslint
+```
+
+-   Next, create an eslint.config.mjs config file in the root of your project, and populate it with the following:
+
+```eslint.config.mjs
+// @ts-check
+
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+);
+```
+- To avoid conflicts between prettier and eslint install 
+```sh
+npm i -D eslint-config-prettier
+```
+- Import and add config to eslint.cofnig.mjs file
+```js
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
+export default tseslint.config(someConfig, eslintConfigPrettier)
+```
+
 [] Git hooks setup
 [] Application config setup
 [] Express app setup

@@ -1,2 +1,9 @@
-console.log('Welcome to MERN Stack coruse')
-let a = 10
+function welcome(name: string) {
+    const user = {
+        name: 'pramod',
+    }
+    const username = user.name
+    return name + username
+}
+
+welcome('pramod')
