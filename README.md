@@ -235,6 +235,15 @@ npm install --save-dev lint-staged # requires further setup
 npx lint-staged
 ```
 
+#### Application config setup
+
+- Create .env file to store sensitive information
+- Install dotenv package
+```sh
+npm install dotenv
+```
+
+
 [] Application config setup
 [] Express app setup
 [] Logger setup
