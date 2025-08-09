@@ -182,7 +182,7 @@ export default tseslint.config(
 );
 ```
 
--   To avoid conflicts between prettier and eslint install
+-   To avoid conflicts between prettier and eslint install https://github.com/prettier/eslint-config-prettier
 
 ```sh
 npm i -D eslint-config-prettier
@@ -243,36 +243,51 @@ npx lint-staged
 ```sh
 npm install dotenv
 ```
-- Provide .env file path if it is not directly in the root folder
+
+-   Provide .env file path if it is not directly in the root folder
+
 ```ts
-import { config } from "dotnev"
+import { config } from 'dotnev'
 config()
 ```
 
 #### Express app setup
 
-- Install express version 4
+-   Install express version 4
+
 ```sh
-npm i express@4.18.2 
+npm i express@4.18.2
 npm i  @types/express@4.18.2 -D
 ```
-- Create app.ts file and export the app
-- Create an express application
-- Listen on port 7777 in server.ts file
+
+-   Create app.ts file and export the app
+-   Create an express application
+-   Listen on port 7777 in server.ts file
 
 ```ts
 const app = Express()
 app.listen(7777, () => {
-    console.log("server is listening on port 7777")
+    console.log('server is listening on port 7777')
 })
 ```
 
-- TypeScript execution and REPL for node.js, with source map and native ESM support.
+-   TypeScript execution and REPL for node.js, with source map and native ESM support.
+
 ```sh
 npm i nodemon ts-node -D
 ```
 
-[] Logger setup
+
+#### Logger setup
+
+- Install winston package for logging
+```sh
+npm i winston
+npm i -D @types/winston
+```
+- Create logger.ts file in config folder
+
+ 
 [] Error handling setup
 [] Tests setup
 [] Create template
