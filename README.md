@@ -197,6 +197,8 @@ export default tseslint.config(someConfig, eslintConfigPrettier)
 
 #### Git hooks / husky setup
 
+-   Husky is a tool that makes Git hooks easy, used for automating tasks such as linting and testing on pre-commit or pre-push.
+
 -   Install husky package
 
 ```sh
