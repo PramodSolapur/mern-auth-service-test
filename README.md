@@ -191,7 +191,18 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat'
 export default tseslint.config(someConfig, eslintConfigPrettier)
 ```
 
-[] Git hooks setup
+#### Git hooks / husky setup
+
+- Install husky package
+```sh
+npm install --save-dev husky
+```
+- The init command simplifies setting up husky in a project.
+```sh
+npx husky init
+```
+- It creates a pre-commit script in .husky/ and updates the prepare script in package.json. Modifications can be made later to suit your workflow.
+
 [] Application config setup
 [] Express app setup
 [] Logger setup
