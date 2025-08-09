@@ -1,0 +1,11 @@
+{
+  "name": "auth-service-01",
+  "version": "1.0.0",
+  "description": "[]  Git Setup\r []  Node Version Manager Setup\r []  Nodejs Project setup\r []  Typescript setup\r []  Prettier setup\r []  ESlint setup\r []  Git hooks setup\r []  Application config setup\r []  Express app setup\r []  Logger setup\r []  Error handling setup\r []  Tests setup\r []  Create template",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

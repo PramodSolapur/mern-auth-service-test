@@ -70,3 +70,12 @@ v22.10.0
 ```sh
 nvm use
 ```
+
+#### Nodej project Setup
+
+- Initialize node project
+```sh
+npm init
+```
+- It will create package.json file
+- Create src folder
