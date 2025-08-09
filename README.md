@@ -277,17 +277,31 @@ app.listen(7777, () => {
 npm i nodemon ts-node -D
 ```
 
-
 #### Logger setup
 
-- Install winston package for logging
+-   Install winston package for logging
+
 ```sh
 npm i winston
 npm i -D @types/winston
 ```
-- Create logger.ts file in config folder
 
- 
-[] Error handling setup
+-   Create logger.ts file in config folder
+
+
+#### Error handling setup
+
+- Create a global middleware to handle errors
+```js
+app.use((err, req, res, next) => {
+    res.status(statusCode).json({ msg: "some msg" })
+})
+```
+- Install http-errors package to send proper status code
+```sh
+npm i http-errors
+npm i -D @types/http-errors
+```
+
 [] Tests setup
 [] Create template
