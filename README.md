@@ -433,16 +433,16 @@ Once the image is built, you can run it:
 docker run --rm -it -v $(pwd):/usr/src/app -v /usr/src/app/node_modules --env-file $(pwd)/.env -p 5501:5501 -e NODE_ENV=development --name auth-service-container auth-prep:dev
 ```
 
-- docker run : used to run a isolation container from an image
-- --rm: Remove the container automatically once it stops.
-- --it: Run the container in an interactive terminal (not detached).
-- -v $(pwd):/usr/src/app: Bind-mount local files into the container.Changes in local files will reflect inside the container
-- -v /usr/src/app/node_modules: Prevents overwriting the container's node_modules with local ones (avoids binary issues)
-- --env-file $(pwd)/.env: To provide env variables in .env file in local to container
-- -p 5501:5501: Post binding from host(left) to container(right)
-- -e NODE_ENV=development: Pass environment variable directly
-- --name auth-service-container: Name for the container else random name will be assgined
-- auth-prep:dev: Name of the image to run.
+-   docker run : used to run a isolation container from an image
+-   --rm: Remove the container automatically once it stops.
+-   --it: Run the container in an interactive terminal (not detached).
+-   -v $(pwd):/usr/src/app: Bind-mount local files into the container.Changes in local files will reflect inside the container
+-   -v /usr/src/app/node_modules: Prevents overwriting the container's node_modules with local ones (avoids binary issues)
+-   --env-file $(pwd)/.env: To provide env variables in .env file in local to container
+-   -p 5501:5501: Post binding from host(left) to container(right)
+-   -e NODE_ENV=development: Pass environment variable directly
+-   --name auth-service-container: Name for the container else random name will be assgined
+-   auth-prep:dev: Name of the image to run.
 
 ℹ️ For Powershell users:
 use `${PWD}` instead of `$(pwd)`
@@ -473,9 +473,13 @@ docker stop <container id>
 
 Docker provides a consistent environment for applications, reducing the "it works on my machine" problem. With your Express app now containerized, you can be confident that it will run the same way everywhere Docker is installed. As you proceed in your MERN stack journey, consider containerizing other parts of the stack for a seamless development and deployment experience.
 
-
 ![Docker Diagram](./assets/docker.png)
 
-
 #### TEST DRIVEN DEVELOPMENT
+
 https://codersgyan.notion.site/Mastering-TDD-with-Express-js-The-Registration-Endpoint-8c88ae78daf74cbb8954b269601ab354
+
+
+#### Setting up PostgreSQL 
+
+https://codersgyan.notion.site/Setting-up-PostgreSQL-in-a-Docker-Container-with-Persistent-Volume-58711388eb244c9fa1597d87783e3f92
