@@ -502,4 +502,6 @@ https://www.npmjs.com/package/cross-env
 https://express-validator.github.io/docs/guides/getting-started
 
 
-##### 
+#### Authentication
+
+![Authentication Diagram](./assets/Authentication.png)
