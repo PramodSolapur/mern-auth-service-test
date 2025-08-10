@@ -10,8 +10,8 @@ export const AppDataSource = new DataSource({
     username: Config.DB_USERNAME,
     password: Config.DB_PASSWORD,
     database: Config.DB_NAME,
-    // trun off synchronize in production. It creates table without migration
-    synchronize: Config.NODE_ENV === 'test' || Config.NODE_ENV === 'dev',
+    // always use false as synchronize in production. It creates table without migration
+    synchronize: false,
     logging: false,
     entities: [User],
     migrations: [],
