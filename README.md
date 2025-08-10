@@ -483,7 +483,6 @@ https://codersgyan.notion.site/Mastering-TDD-with-Express-js-The-Registration-En
 
 https://codersgyan.notion.site/Setting-up-PostgreSQL-in-a-Docker-Container-with-Persistent-Volume-58711388eb244c9fa1597d87783e3f92
 
-
 #### Setting up Type ORM
 
 https://typeorm.io/docs/getting-started#installation
@@ -491,5 +490,5 @@ https://typeorm.io/docs/getting-started#installation
 #### Setting up Cross-Env
 
 https://www.npmjs.com/package/cross-env
-- Use cros-env in package.json file
 
+-   Use cros-env in package.json file
