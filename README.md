@@ -505,14 +505,10 @@ https://express-validator.github.io/docs/guides/getting-started
 
 ![Authentication Diagram](./assets/Authentication.png)
 
-
-- Install jwt package to generate and verify tokens
-- Generate private and public keys using crypto module
-- Add certs folder into the .gitignore file
-
+-   Install jwt package to generate and verify tokens
+-   Generate private and public keys using crypto module
+-   Add certs folder into the .gitignore file
 
 #### Access and Refresh Token
 
-![Access-Refresh Token Daigram](./assets/access-refresh.png) 
-
-
+![Access-Refresh Token Daigram](./assets/access-refresh.png)
