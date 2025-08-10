@@ -493,7 +493,6 @@ https://www.npmjs.com/package/cross-env
 
 -   Use cros-env in package.json file
 
-
 ##### Hash password
 
-- Install bcrypt package for password hashing and comparision
+-   Install bcrypt package for password hashing and comparision
