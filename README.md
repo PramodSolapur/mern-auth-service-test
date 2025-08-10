@@ -479,7 +479,6 @@ Docker provides a consistent environment for applications, reducing the "it work
 
 https://codersgyan.notion.site/Mastering-TDD-with-Express-js-The-Registration-Endpoint-8c88ae78daf74cbb8954b269601ab354
 
-
-#### Setting up PostgreSQL 
+#### Setting up PostgreSQL
 
 https://codersgyan.notion.site/Setting-up-PostgreSQL-in-a-Docker-Container-with-Persistent-Volume-58711388eb244c9fa1597d87783e3f92
