@@ -31,6 +31,7 @@ export class AuthController {
             this.logger.info(`User has been registered`, { id: user.id })
             res.status(201).json({ id: user.id })
         } catch (error) {
+            console.log(error)
             next(error)
             return
         }
