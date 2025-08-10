@@ -81,6 +81,29 @@ describe('POST /auth/register', () => {
             expect(users[0].email).toBe(userData.email)
             expect(users[0].password).toBe(userData.password)
         })
+
+        it('should return an id of the created user', async () => {
+            // Arrange
+            const userData = {
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'john@gmail.com',
+                password: 'secret',
+            }
+
+            // Act
+            const response = await request(app)
+                .post('/auth/register')
+                .send(userData)
+
+            // Assert
+            expect(response.body).toHaveProperty('id')
+            const userRepository = connection.getRepository(User)
+            const users = await userRepository.find()
+            expect((response.body as Record<string, string>).id).toBe(
+                users[0].id,
+            )
+        })
     })
 
     // Sad path
