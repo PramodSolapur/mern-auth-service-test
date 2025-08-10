@@ -496,3 +496,10 @@ https://www.npmjs.com/package/cross-env
 ##### Hash password
 
 -   Install bcrypt package for password hashing and comparision
+
+##### Express Validator and Input Sanitization
+
+https://express-validator.github.io/docs/guides/getting-started
+
+
+##### 
