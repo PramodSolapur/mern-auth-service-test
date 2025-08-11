@@ -98,8 +98,28 @@ describe('GET /auth/self', () => {
                 .send()
 
             // Assert
-            // Check if user id matches with registered user
             expect(response.body).not.toHaveProperty('password')
+        })
+
+        it('should return 401 status code if token does not exist', async () => {
+            // Register user
+            const userData = {
+                firstName: 'john',
+                lastName: 'dow',
+                email: 'john@mern.space',
+                password: 'password',
+            }
+            const userRepository = connection.getRepository(User)
+            await userRepository.save({
+                ...userData,
+                role: Roles.CUSTOMER,
+            })
+
+            // Add token to cookie
+            const response = await request(app).get('/auth/self').send()
+
+            // Assert
+            expect(response.statusCode).toBe(401)
         })
     })
 })
