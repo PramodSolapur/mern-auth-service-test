@@ -4,6 +4,7 @@ import express, {
     type Response,
     type NextFunction,
 } from 'express'
+import cookieParser from 'cookie-parser'
 import { HttpError } from 'http-errors'
 import authRouter from './routes/auth'
 import logger from './config/logger'
@@ -11,6 +12,7 @@ import logger from './config/logger'
 const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).send('Welcome to Auth-Service')
