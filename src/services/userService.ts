@@ -29,7 +29,6 @@ export class UserService {
                 password: hashedPassword,
                 role: Roles.CUSTOMER,
             })
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             const error = createHttpError(
                 500,
