@@ -3,8 +3,13 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 import fs from 'node:fs'
 import path from 'node:path'
 import { Config } from '../config/config'
+import { User } from '../entity/User'
+import { RefreshToken } from '../entity/RefreshToken'
+import { Repository } from 'typeorm'
 
 export class TokenService {
+    constructor(private refreshTokenRepository: Repository<RefreshToken>) {}
+
     generateAccessToken(payload: JwtPayload) {
         let privateKey: Buffer
 
@@ -12,7 +17,6 @@ export class TokenService {
             privateKey = fs.readFileSync(
                 path.join(__dirname, '../../certs/private.pem'),
             )
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             const error = createHttpError(
                 500,
@@ -37,5 +41,14 @@ export class TokenService {
             jwtid: String(payload.id),
         })
         return refreshToken
+    }
+
+    async persistefreshToken(user: User) {
+        const MS_IN_DAY = 1000 * 60 * 60 * 24
+        const newRefreshToken = await this.refreshTokenRepository.save({
+            user,
+            expiresAt: new Date(Date.now() + MS_IN_DAY),
+        })
+        return newRefreshToken
     }
 }

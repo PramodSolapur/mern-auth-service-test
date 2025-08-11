@@ -513,8 +513,8 @@ https://express-validator.github.io/docs/guides/getting-started
 
 ![Access-Refresh Token Daigram](./assets/access-refresh.png)
 
+##### Refresh Token
 
-##### Refresh Token 
-- Create RefreshToken entity
-- Define all the fields and estalish relation between token and user
-- Register the entity into data source
+-   Create RefreshToken entity
+-   Define all the fields and estalish relation between token and user
+-   Register the entity into data source
