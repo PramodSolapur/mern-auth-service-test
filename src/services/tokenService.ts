@@ -43,7 +43,7 @@ export class TokenService {
         return refreshToken
     }
 
-    async persistefreshToken(user: User) {
+    async persistRefreshToken(user: User) {
         const MS_IN_DAY = 1000 * 60 * 60 * 24
         const newRefreshToken = await this.refreshTokenRepository.save({
             user,
