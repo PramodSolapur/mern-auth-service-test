@@ -109,5 +109,43 @@ describe('POST /tenants', () => {
         })
     })
 
-    describe('Fields are missing ', () => {})
+    describe('Fields are missing ', () => {
+        it('should return 400 status code is name is missing', async () => {
+            const tenantData = {
+                name: '',
+                address: 'tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            const res = await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            expect(res.statusCode).toBe(400)
+        })
+
+        it('should return 400 status code is address is missing', async () => {
+            const tenantData = {
+                name: '',
+                address: '',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            const res = await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            expect(res.statusCode).toBe(400)
+        })
+    })
 })
