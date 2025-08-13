@@ -7,6 +7,7 @@ import { TokenService } from '../services/tokenService'
 import { JwtPayload } from 'jsonwebtoken'
 import createHttpError from 'http-errors'
 import { CredentialService } from '../services/credentialService'
+import { Roles } from '../constants'
 
 export class AuthController {
     constructor(
@@ -42,6 +43,7 @@ export class AuthController {
                 lastName,
                 email,
                 password,
+                role: Roles.CUSTOMER,
             })
             this.logger.info(`User has been registered`, { id: user.id })
 

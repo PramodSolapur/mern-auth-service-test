@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt'
 export class UserService {
     constructor(private userRepository: Repository<User>) {}
 
-    async create({ firstName, lastName, email, password }: UserData) {
+    async create({ firstName, lastName, email, password, role }: UserData) {
         // Hash password
         const saltRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltRounds)
@@ -27,7 +27,7 @@ export class UserService {
                 lastName,
                 email,
                 password: hashedPassword,
-                role: Roles.CUSTOMER,
+                role,
             })
         } catch (err) {
             const error = createHttpError(

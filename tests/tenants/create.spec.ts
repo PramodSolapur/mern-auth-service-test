@@ -107,6 +107,145 @@ describe('POST /tenants', () => {
 
             expect(tenants).toHaveLength(0)
         })
+
+        it('should return 200 status code', async () => {
+            const tenantData = {
+                name: 'tenant name',
+                address: 'tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            const res = await request(app).get('/tenants').send()
+
+            const tenantRepo = connection.getRepository(Tenant)
+            const tenants = await tenantRepo.find()
+
+            expect(res.statusCode).toBe(200)
+            expect(tenants).toHaveLength(1)
+        })
+
+        it('should return 404 status code if tenant not found', async () => {
+            const tenantData = {
+                name: 'tenant name',
+                address: 'tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            const res = await request(app)
+                .get('/tenants/2')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send()
+
+            expect(res.statusCode).toBe(404)
+        })
+
+        it('should return 200 status code if tenant found', async () => {
+            const tenantData = {
+                name: 'tenant name',
+                address: 'tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            const tenant = await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            const res = await request(app)
+                .get('/tenants/1')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send()
+
+            const tenantRepo = connection.getRepository(Tenant)
+            const data = await tenantRepo.findOne({ where: { id: 1 } })
+
+            expect(res.statusCode).toBe(200)
+            expect((tenant.body as Record<string, string>)['id']).toBe(data?.id)
+        })
+
+        it('should return 200 status code if tenant updated', async () => {
+            const tenantData = {
+                name: 'tenant name',
+                address: 'tenant address',
+            }
+
+            const updatedTenantData = {
+                name: 'update tenant name',
+                address: 'update tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            const res = await request(app)
+                .patch('/tenants/1')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(updatedTenantData)
+
+            const tenantRepo = connection.getRepository(Tenant)
+            const data = await tenantRepo.findOne({ where: { id: 1 } })
+
+            expect(res.statusCode).toBe(200)
+            expect(data?.name).toBe('update tenant name')
+            expect(data?.address).toBe('update tenant address')
+        })
+
+        it('should return 200 status code if tenant deleted', async () => {
+            const tenantData = {
+                name: 'tenant name',
+                address: 'tenant address',
+            }
+
+            const adminToken = jwks.token({
+                sub: '1',
+                role: Roles.ADMIN,
+            })
+
+            await request(app)
+                .post('/tenants')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send(tenantData)
+
+            const res = await request(app)
+                .delete('/tenants/1')
+                .set('Cookie', [`accessToken=${adminToken};`])
+                .send()
+
+            const tenantRepo = connection.getRepository(Tenant)
+            const data = await tenantRepo.find()
+
+            expect(res.statusCode).toBe(200)
+            expect(data).toHaveLength(0)
+        })
     })
 
     describe('Fields are missing ', () => {

@@ -18,11 +18,36 @@ const tenantController = new TenantController(tenantService, logger)
 
 router.post(
     '/',
+    authenticate,
+    canAccess([Roles.ADMIN]),
     tenantValidator,
+    (req: TenantRequest, res: Response, next: NextFunction) =>
+        tenantController.create(req, res, next),
+)
+
+router.get('/', (req: TenantRequest, res: Response, next: NextFunction) =>
+    tenantController.getAll(req, res, next),
+)
+
+router.get('/:id', authenticate, canAccess([Roles.ADMIN]), (req, res, next) =>
+    tenantController.getOne(req, res, next),
+)
+
+router.patch(
+    '/:id',
+    authenticate,
+    canAccess([Roles.ADMIN]),
+    tenantValidator,
+    (req: TenantRequest, res: Response, next: NextFunction) =>
+        tenantController.update(req, res, next),
+)
+
+router.delete(
+    '/:id',
     authenticate,
     canAccess([Roles.ADMIN]),
     (req: TenantRequest, res: Response, next: NextFunction) =>
-        tenantController.create(req, res, next),
+        tenantController.deleteById(req, res, next),
 )
 
 export default router
