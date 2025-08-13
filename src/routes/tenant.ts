@@ -1,5 +1,4 @@
 import { NextFunction, Response, Router } from 'express'
-import { json } from 'stream/consumers'
 import { TenantController } from '../controllers/TenantController'
 import { TenantService } from '../services/tenantService'
 import { AppDataSource } from '../config/data-source'
@@ -7,6 +6,8 @@ import { Tenant } from '../entity/Tenant'
 import { TenantRequest } from '../types'
 import logger from '../config/logger'
 import authenticate from '../middlewares/authenticate'
+import { canAccess } from '../middlewares/canAccess'
+import { Roles } from '../constants'
 
 const router = Router()
 
@@ -17,6 +18,7 @@ const tenantController = new TenantController(tenantService, logger)
 router.post(
     '/',
     authenticate,
+    canAccess([Roles.ADMIN]),
     (req: TenantRequest, res: Response, next: NextFunction) =>
         tenantController.create(req, res, next),
 )
