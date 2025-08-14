@@ -8,7 +8,14 @@ import bcrypt from 'bcrypt'
 export class UserService {
     constructor(private userRepository: Repository<User>) {}
 
-    async create({ firstName, lastName, email, password, role }: UserData) {
+    async create({
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+        tenantId,
+    }: UserData) {
         // Hash password
         const saltRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltRounds)
@@ -28,6 +35,7 @@ export class UserService {
                 email,
                 password: hashedPassword,
                 role,
+                tenantId: tenantId ? { id: tenantId } : undefined,
             })
         } catch (err) {
             const error = createHttpError(
