@@ -6,12 +6,13 @@ import { Roles } from '../constants'
 import { User } from '../entity/User'
 import { UserController } from '../controllers/UserController'
 import { UserService } from '../services/userService'
+import logger from '../config/logger'
 
 const router = Router()
 
 const userRepository = AppDataSource.getRepository(User)
 const userService = new UserService(userRepository)
-const userController = new UserController(userService)
+const userController = new UserController(userService, logger)
 
 router.post('/', authenticate, canAccess([Roles.ADMIN]), (req, res, next) =>
     userController.create(req, res, next),
