@@ -15,13 +15,17 @@ export default tseslint.config(
             'eslint.config.mjs',
             'jest.config.js',
             './scripts/*',
+            './coverage/*',
+            './tests/*',
+            '*.spec.ts', // <--- add this line
+            '**/*.spec.ts', // <--- and this line for nested spec files
         ],
     },
     {
         languageOptions: {
             parserOptions: {
                 projectService: true,
-                tsconfigRootDir: import.meta.dirname,
+                tsconfigRootDir: process.cwd(),
             },
         },
         rules: {

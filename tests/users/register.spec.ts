@@ -186,8 +186,8 @@ describe('POST /auth/register', () => {
                 .send(userData)
 
             // Assert
-            let accessToken = null
-            let refreshToken = null
+            let accessToken: string | null = null
+            let refreshToken: string | null = null
             const cookies = response.headers['set-cookie'] || []
 
             if (Array.isArray(cookies)) {

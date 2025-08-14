@@ -5,11 +5,13 @@
     "main": "server.js",
     "scripts": {
         "dev": "cross-env NODE_ENV=dev nodemon src/server.ts --legacy-watch ",
+        "build": "tsc",
         "format:fix": "prettier . --write",
         "format:check": "prettier . --check",
         "lint:fix": "eslint . --fix",
         "lint:check": "eslint .",
-        "test": "jest --watchAll --runInBand",
+        "test": "jest --no-cache --coverage --all --runInBand",
+        "test:watch": "jest --watchAll --runInBand",
         "prepare": "husky",
         "start": "ts-node src/index.ts",
         "migration:generate": "typeorm-ts-node-commonjs migration:generate",
@@ -42,7 +44,7 @@
         "supertest": "^7.1.4",
         "ts-jest": "^29.4.1",
         "ts-node": "^10.9.2",
-        "typescript": "^4.5.2",
+        "typescript": "^5.9.2",
         "typescript-eslint": "^8.39.0"
     },
     "lint-staged": {
